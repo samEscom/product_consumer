@@ -7,20 +7,26 @@ from src.product import Product
 
 def main(event, context) -> Dict:
 
-    logger.info(event)
+    logger.info(f"input event: {event}")
     if "Records" in event.keys():
         event = loads(event["Records"][0]["body"])
 
-    payload = event["payload"]
+    sku = event.get("sku")
+    product_save = event.get("product")
+    token = event.get("token")
+    is_saved = False
 
     product = Product()
-    product.save_product(payload)
+
+    if event["update"]:
+        is_saved = product.save_product(str(token), str(sku), product_save)
 
     return {
         "statusCode": 200,
         "body": dumps(
             {
-                "payload": payload
+                "sku": sku,
+                "isSaved": is_saved,
             }
         ),
     }

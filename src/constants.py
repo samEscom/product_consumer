@@ -1,5 +1,3 @@
-
-
 # AWS SERVICES
 AWS_SERVICE_SES = "ses"
 AWS_SERVICE_SQS = "sqs"
@@ -7,7 +5,7 @@ AWS_SERVICE_S3 = "s3"
 AWS_REGION_EAST = "us-east-2"
 AWS_SERVICE_DYNAMO = "dynamodb"
 
-QUEUE_URL = 'https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue'
+QUEUE_URL = "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
 
 
 # ECOMMERCE
