@@ -6,7 +6,7 @@ if __name__ == "__main__":
             {
                 "messageId": "ad956138-7c34-4897-938a-ae832701e434",
                 "receiptHandle": "AQXLyd9YSMvhxhyircETPk0KuNVzouCAyKfd",
-                "body": '{"payload": {"product": "P1", "qty": 1}}',
+                "body": '{"update": true, "token": "456", "sku": "123","product": {"sku": "123", "price": "123.08"}}',
                 "attributes": {
                     "ApproximateReceiveCount": "1",
                     "SentTimestamp": "1642657839344",

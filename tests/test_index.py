@@ -1,11 +1,20 @@
 import json
 
+import boto3
 import requests
 
 from index import handler
 from src.constants import ECOMMERCE_API
 
-from .mocks.requests.requests import RequestMock
+from tests.mocks.requests.requests import RequestMock
+from tests.mocks.boto3_client import Boto3ClientMock
+
+mock_boto3 = {
+    "put_item": {
+        "raise_exception": False,
+        "response": {"ResponseMetadata": {"HTTPStatusCode": 200}},
+    },
+}
 
 
 def test_save_product(monkeypatch):
@@ -20,6 +29,10 @@ def test_save_product(monkeypatch):
             }
         )
 
+    def mock_boto3client_success(_, **kwargs):
+        return Boto3ClientMock(_, mock_data=mock_boto3)
+
+    monkeypatch.setattr(boto3, "client", mock_boto3client_success)
     monkeypatch.setattr(requests, "session", mock_requests_session)
 
     response = handler(
@@ -84,6 +97,12 @@ def test_save_product_fail(monkeypatch):
             }
         )
 
+    mock_boto3["put_item"]["raise_exception"] = True
+
+    def mock_boto3client_success(_, **kwargs):
+        return Boto3ClientMock(_, mock_data=mock_boto3)
+
+    monkeypatch.setattr(boto3, "client", mock_boto3client_success)
     monkeypatch.setattr(requests, "session", mock_requests_session)
 
     response = handler(

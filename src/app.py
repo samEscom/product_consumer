@@ -15,11 +15,13 @@ def main(event, context) -> Dict:
     product_save = event.get("product")
     token = event.get("token")
     is_saved = False
+    is_replicated = False
 
     product = Product()
 
     if event["update"]:
-        is_saved = product.save_product(str(token), str(sku), product_save)
+        is_saved = product.save_product_ecommerce(str(token), str(sku), product_save)
+        is_replicated = product.save_product(str(sku), product_save)
 
     return {
         "statusCode": 200,
@@ -27,6 +29,7 @@ def main(event, context) -> Dict:
             {
                 "sku": sku,
                 "isSaved": is_saved,
+                "isReplicated": is_replicated,
             }
         ),
     }
