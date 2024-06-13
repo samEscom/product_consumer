@@ -1,11 +1,12 @@
-import requests
 from typing import Dict
-from src.logger import logger
+
+import requests
+
 from src.constants import ECOMMERCE_API
+from src.logger import logger
 
 
 class Product:
-
     @staticmethod
     def save_product(token: str, sku: str, payload: Dict) -> bool:
 

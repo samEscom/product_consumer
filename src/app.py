@@ -19,11 +19,7 @@ def main(event, context) -> Dict:
     product = Product()
 
     if event["update"]:
-        is_saved = product.save_product(
-            str(token),
-            str(sku),
-            product_save
-        )
+        is_saved = product.save_product(str(token), str(sku), product_save)
 
     return {
         "statusCode": 200,

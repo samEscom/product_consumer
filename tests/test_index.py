@@ -1,10 +1,11 @@
 import json
+
 import requests
+
 from index import handler
+from src.constants import ECOMMERCE_API
 
 from .mocks.requests.requests import RequestMock
-
-from src.constants import ECOMMERCE_API
 
 
 def test_save_product(monkeypatch):
@@ -22,7 +23,12 @@ def test_save_product(monkeypatch):
     monkeypatch.setattr(requests, "session", mock_requests_session)
 
     response = handler(
-        event={"update": True, "token": "456", "sku": "123", "product": {"sku": "123", "price": "123.08"}},
+        event={
+            "update": True,
+            "token": "456",
+            "sku": "123",
+            "product": {"sku": "123", "price": "123.08"},
+        },
         context=None,
     )
 
@@ -49,7 +55,12 @@ def test_save_product_fail(monkeypatch):
     monkeypatch.setattr(requests, "session", mock_requests_session)
 
     response = handler(
-        event={"update": True, "token": "fail", "sku": "456", "product": {"sku": "456", "price": "123.08"}},
+        event={
+            "update": True,
+            "token": "fail",
+            "sku": "456",
+            "product": {"sku": "456", "price": "123.08"},
+        },
         context=None,
     )
 
