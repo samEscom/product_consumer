@@ -5,6 +5,8 @@ AWS_SERVICE_S3 = "s3"
 AWS_REGION_EAST = "us-east-2"
 AWS_SERVICE_DYNAMO = "dynamodb"
 
+TABLE_NAME = "summaries"
+
 QUEUE_URL = "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
 
 
