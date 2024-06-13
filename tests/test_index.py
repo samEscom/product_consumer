@@ -5,9 +5,8 @@ import requests
 
 from index import handler
 from src.constants import ECOMMERCE_API
-
-from tests.mocks.requests.requests import RequestMock
 from tests.mocks.boto3_client import Boto3ClientMock
+from tests.mocks.requests.requests import RequestMock
 
 mock_boto3 = {
     "put_item": {

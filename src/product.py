@@ -1,15 +1,14 @@
-from typing import Dict
 from datetime import datetime
+from typing import Dict
 
 import requests
 
+from src.aws import Aws
 from src.constants import ECOMMERCE_API
 from src.logger import logger
-from src.aws import Aws
 
 
 class Product:
-
     def __init__(self):
         self.aws = Aws()
 

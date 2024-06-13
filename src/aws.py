@@ -3,12 +3,7 @@ from typing import Any, Dict
 import boto3
 from botocore.client import Config
 
-from src.logger import logger
-from src.constants import (
-    AWS_REGION_EAST,
-    AWS_SERVICE_DYNAMO,
-    TABLE_NAME,
-)
+from src.constants import AWS_REGION_EAST, AWS_SERVICE_DYNAMO, TABLE_NAME
 
 
 class Aws:
